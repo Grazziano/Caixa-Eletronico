@@ -23,4 +23,10 @@ class Contas extends Conexao
             header("Location: ../login.php?not_login");
         }
     }
+
+    // Método para fazer logout
+    public function logout()
+    {
+        unset($_SESSION['login']);
+    }
 }
