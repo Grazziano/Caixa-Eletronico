@@ -178,17 +178,21 @@ if (isset($_SESSION['login'])) {
                         </tr>
                         </thead>
                         <tbody style="text-align: center;">
+                        <?php foreach ($contas->listHistoric($id) as $historic): ?>
+                            <tr>
+                                <td>
+                                    <?php echo date("d/m/Y H:m:s", strtotime($historic['data_operacao'])); ?>
+                                </td>
 
-                        <tr>
-                            <td></td>
+                                <td style="color: green;">
+                                    <?php echo $historic['valor']; ?>
+                                </td>
 
-                            <td style="color: green;">
-
-                            </td>
-
-                            <td></td>
-                        </tr>
-
+                                <td>
+                                    <?php echo $historic['tipo']; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
 
