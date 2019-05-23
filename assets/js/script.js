@@ -1,11 +1,11 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-	$('.formulario').hide();
+    $('.formulario').hide();
 
-	$('.form_jquery').bind('click', function(){
+    $('.form_jquery').bind('click', function () {
 
-		$('.formulario').toggle();
+        $('.formulario').toggle();
 
-	});
+    });
 
 });

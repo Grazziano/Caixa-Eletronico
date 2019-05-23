@@ -10,8 +10,6 @@ if (isset($_SESSION['login'])) {
 
     ?>
 
-    <!-- Template by Marcos André -->
-
     <!DOCTYPE html>
     <html lang="pt-br">
 
@@ -35,7 +33,7 @@ if (isset($_SESSION['login'])) {
 
     <body>
 
-    <!-- Init of Template - Marcos André -->
+    <!-- Init of Template -->
 
     <div class="d-flex">
         <nav class="sidebar">
@@ -114,7 +112,7 @@ if (isset($_SESSION['login'])) {
                                 <!-- Formulario para Transação -->
                                 <td>
 
-                                    <form method="POST" action="">
+                                    <form method="POST" action="view/add_transacao.php">
 
                                         <!-- Botão para Transação -->
 
@@ -147,13 +145,10 @@ if (isset($_SESSION['login'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <!-- End of Template - Marcos André -->
 
     </body>
 
     </html>
-
-    <!-- Template by Marcos André -->
 
     <?php
 } else {
