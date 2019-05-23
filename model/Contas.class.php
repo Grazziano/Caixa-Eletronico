@@ -15,6 +15,20 @@ class Contas extends Conexao
         }
     }
 
+    // Método para pegar informações de cada conta
+    public function getInfo($id)
+    {
+        $pdo = parent::get_instance();
+        $sql = "SELECT * FROM contas WHERE id = :id";
+        $sql = $pdo->prepare($sql);
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            return $sql->fetchAll();
+        }
+    }
+
     // Método para fazer Login
     public function setLogged($agencia, $conta, $senha)
     {

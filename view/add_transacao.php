@@ -5,6 +5,13 @@ session_start();
 
 if (isset($_SESSION['login'])) {
 
+    include_once '../model/Conexao.class.php';
+    include_once '../model/Contas.class.php';
+
+    $contas = new Contas();
+
+    $id = $_POST['id'];
+
     ?>
 
     <!-- Fim - PHP -->
@@ -56,34 +63,35 @@ if (isset($_SESSION['login'])) {
                     </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($contas->getInfo($id) as $account_info): ?>
+                        <tr class="tr">
+                            <td><?php echo $account_info['id']; ?></td>
+                            <td><?php echo $account_info['titular']; ?></td>
+                            <td><?php echo $account_info['agencia']; ?></td>
+                            <td><?php echo $account_info['conta']; ?></td>
+                            <td><?php echo $account_info['saldo']; ?></td>
+                            <td style="text-align: center;">
 
-                    <tr class="tr">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="text-align: center;">
+                            </td>
 
-                        </td>
+                            <!-- Botões de Ações -->
+                            <td style="text-align: center;">
 
-                        <!-- Botões de Ações -->
-                        <td style="text-align: center;">
+                                <button class="btn btn-primary btn-lg">
+                                    <i class="fa fa-print"></i>
+                                </button>
 
-                            <button class="btn btn-primary btn-lg">
-                                <i class="fa fa-print"></i>
-                            </button>
+                                <button class="btn btn-warning btn-lg form_jquery">
+                                    <i class="fa fa-dollar-sign"></i>
+                                </button>
 
-                            <button class="btn btn-warning btn-lg form_jquery">
-                                <i class="fa fa-dollar-sign"></i>
-                            </button>
-
-                        </td>
+                            </td>
 
 
-                        <!-- Fim - Form de Transacao -->
+                            <!-- Fim - Form de Transacao -->
 
-                    </tr>
-
+                        </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
                 <hr>

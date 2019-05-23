@@ -116,6 +116,8 @@ if (isset($_SESSION['login'])) {
 
                                         <!-- Botão para Transação -->
 
+                                        <input type="hidden" name="id" value="<?= $account['id'] ?>">
+
                                         <button class="btn btn-warning btn-xs">
                                             <i class="fa fa-dollar-sign"></i>
                                         </button>
