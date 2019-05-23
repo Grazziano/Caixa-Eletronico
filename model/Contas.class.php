@@ -2,6 +2,34 @@
 
 class Contas extends Conexao
 {
+    // Método para efetuar transação
+    public function setTransaction($tipo, $valor)
+    {
+        $pdo = parent::get_instance();
+        $sql = "INSERT INTO historico (id_conta, tipo, valor, data_operacao) VALUES (:id_conta, :tipo, :valor, NOW())";
+        $sql = $pdo->prepare($sql);
+        $sql->bindValue(":id_conta", $_SESSION['login']);
+        $sql->bindValue(":tipo", $tipo);
+        $sql->bindValue(":valor", $valor);
+        $sql->execute();
+
+        if ($tipo == 'Deposito') {
+            // Deposito
+            $sql = "UPDATE contas SET saldo = saldo + :valor WHERE id = :id";
+            $sql = $pdo->prepare($sql);
+            $sql->bindValue(":valor", $valor);
+            $sql->bindValue(":id", $_SESSION['login']);
+            $sql->execute();
+        } else {
+            // Retirada
+            $sql = "UPDATE contas SET saldo = saldo - :valor WHERE id = :id";
+            $sql = $pdo->prepare($sql);
+            $sql->bindValue(":valor", $valor);
+            $sql->bindValue(":id", $_SESSION['login']);
+            $sql->execute();
+        }
+    }
+
     // Método para listar Contas
     public function listAccounts()
     {
