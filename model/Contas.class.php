@@ -13,7 +13,7 @@ class Contas extends Conexao
         $sql->bindValue(":valor", $valor);
         $sql->execute();
 
-        if ($tipo == 'Deposito') {
+        if ($tipo == 'Depósito') {
             // Deposito
             $sql = "UPDATE contas SET saldo = saldo + :valor WHERE id = :id";
             $sql = $pdo->prepare($sql);
@@ -47,7 +47,7 @@ class Contas extends Conexao
     public function listHistoric($id)
     {
         $pdo = parent::get_instance();
-        $sql = "SELECT * FROM historico WHERE id_conta = :id";
+        $sql = "SELECT * FROM historico WHERE id_conta = :id_conta";
         $sql = $pdo->prepare($sql);
         $sql->bindValue(":id_conta", $id);
         $sql->execute();
