@@ -77,7 +77,7 @@ if (isset($_SESSION['login'])) {
                             <!-- Botões de Ações -->
                             <td style="text-align: center;">
 
-                                <button class="btn btn-primary btn-lg">
+                                <button class="btn btn-primary btn-lg" onclick="window.print()">
                                     <i class="fa fa-print"></i>
                                 </button>
 
