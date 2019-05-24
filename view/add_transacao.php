@@ -184,11 +184,15 @@ if (isset($_SESSION['login'])) {
                                 <td>
                                     <?php echo date("d/m/Y H:m:s", strtotime($historic['data_operacao'])); ?>
                                 </td>
-
-                                <td style="color: green;">
-                                    <?php echo $historic['valor']; ?>
-                                </td>
-
+                                <?php if ($historic['tipo'] == "Deposito"): ?>
+                                    <td style="color: green;">
+                                        R$ <?php echo $historic['valor']; ?>
+                                    </td>
+                                <?php else: ?>
+                                    <td style="color: red;">
+                                        - R$ <?php echo $historic['valor']; ?>
+                                    </td>
+                                <?php endif; ?>
                                 <td>
                                     <?php echo $historic['tipo']; ?>
                                 </td>
